@@ -28,7 +28,19 @@
   <groupId>com.google.googlejavaformat</groupId>
   <artifactId>google-java-format-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.8-SNAPSHOT</version>
+  <version>1.8_customized-SNAPSHOT</version>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>azuresdkmaven</id>
+      <url>bs://azuresdkmaven.blob.core.windows.net/snapshot/m2</url>
+    </snapshotRepository>
+
+    <repository>
+      <id>azuresdkmaven</id>
+      <url>bs://azuresdkmaven.blob.core.windows.net/snapshot/m2</url>
+    </repository>
+  </distributionManagement>
 
   <modules>
     <module>core</module>
@@ -144,6 +156,14 @@
   </dependencyManagement>
 
   <build>
+    <extensions>
+      <extension>
+        <groupId>com.gkatzioura.maven.cloud</groupId>
+        <artifactId>azure-storage-wagon</artifactId>
+        <version>2.3</version>
+      </extension>
+    </extensions>
+
     <pluginManagement>
       <plugins>
         <plugin>

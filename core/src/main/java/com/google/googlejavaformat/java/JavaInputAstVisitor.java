@@ -309,9 +309,9 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
   public JavaInputAstVisitor(OpsBuilder builder, int indentMultiplier) {
     this.builder = builder;
     this.indentMultiplier = indentMultiplier;
-    minusTwo = Indent.Const.make(-2, indentMultiplier);
+    minusTwo = Indent.Const.make(-4, indentMultiplier);
     minusFour = Indent.Const.make(-4, indentMultiplier);
-    plusTwo = Indent.Const.make(+2, indentMultiplier);
+    plusTwo = Indent.Const.make(+4, indentMultiplier);
     plusFour = Indent.Const.make(+4, indentMultiplier);
   }
 
@@ -2714,12 +2714,12 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
 
     List<Long> streamPrefixes = handleStream(items);
     streamPrefixes.forEach(x -> prefixes.add(x.intValue()));
-    if (!prefixes.isEmpty()) {
-      visitDotWithPrefix(
-          items, needDot, prefixes, streamPrefixes.isEmpty() ? INDEPENDENT : UNIFIED);
-    } else {
+//    if (!prefixes.isEmpty()) {
+//      visitDotWithPrefix(
+//          items, needDot, prefixes, streamPrefixes.isEmpty() ? INDEPENDENT : UNIFIED);
+//    } else {
       visitRegularDot(items, needDot);
-    }
+//    }
 
     if (node != null) {
       builder.close();
