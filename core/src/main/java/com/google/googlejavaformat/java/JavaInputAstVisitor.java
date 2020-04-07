@@ -1485,7 +1485,8 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
 
   private void methodBody(MethodTree node) {
     if (node.getBody().getStatements().isEmpty()) {
-      builder.blankLineWanted(BlankLineWanted.NO);
+//      builder.blankLineWanted(BlankLineWanted.NO);
+      builder.forcedBreak();
     } else {
       builder.open(plusTwo);
       builder.forcedBreak();
@@ -2744,9 +2745,9 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
     int length = needDot0 ? minLength : 0;
     for (ExpressionTree e : items) {
       if (needDot) {
-        if (length > minLength) {
+//        if (length > minLength) {
           builder.breakOp(FillMode.UNIFIED, "", ZERO);
-        }
+//        }
         token(".");
         length++;
       }
@@ -3468,8 +3469,9 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
       if (braces.isYes()) {
         builder.space();
         tokenBreakTrailingComment("{", plusTwo);
-        builder.blankLineWanted(BlankLineWanted.NO);
+//        builder.blankLineWanted(BlankLineWanted.NO);
         builder.open(ZERO);
+        builder.forcedBreak();
         token("}", plusTwo);
         builder.close();
       }
