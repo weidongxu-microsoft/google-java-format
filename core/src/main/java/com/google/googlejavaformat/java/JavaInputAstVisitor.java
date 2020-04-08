@@ -3318,19 +3318,24 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
 
       if (initializer.isPresent()) {
         builder.space();
-        token(equals);
         if (initializer.get().getKind() == Tree.Kind.NEW_ARRAY
             && ((NewArrayTree) initializer.get()).getType() == null) {
+          token(equals);
           builder.open(minusFour);
           builder.space();
           initializer.get().accept(this, null);
           builder.close();
         } else {
           builder.open(Indent.If.make(typeBreak, plusFour, ZERO));
-          {
+          if (equals.equals(":")) {
+            builder.breakOp();
+            token(equals);
+            builder.space();
+          } else {
+            token(equals);
             builder.breakToFill(" ");
-            scan(initializer.get(), null);
           }
+          scan(initializer.get(), null);
           builder.close();
         }
       }
