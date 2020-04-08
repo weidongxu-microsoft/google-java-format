@@ -154,19 +154,19 @@ public final class Formatter {
     OpsBuilder builder = new OpsBuilder(javaInput, javaOutput);
     // Output the compilation unit.
     JavaInputAstVisitor visitor;
-    if (getMajor() >= 14) {
-      try {
-        visitor =
-            Class.forName("com.google.googlejavaformat.java.java14.Java14InputAstVisitor")
-                .asSubclass(JavaInputAstVisitor.class)
-                .getConstructor(OpsBuilder.class, int.class)
-                .newInstance(builder, options.indentationMultiplier());
-      } catch (ReflectiveOperationException e) {
-        throw new LinkageError(e.getMessage(), e);
-      }
-    } else {
+//    if (getMajor() >= 14) {
+//      try {
+//        visitor =
+//            Class.forName("com.google.googlejavaformat.java.java14.Java14InputAstVisitor")
+//                .asSubclass(JavaInputAstVisitor.class)
+//                .getConstructor(OpsBuilder.class, int.class)
+//                .newInstance(builder, options.indentationMultiplier());
+//      } catch (ReflectiveOperationException e) {
+//        throw new LinkageError(e.getMessage(), e);
+//      }
+//    } else {
       visitor = new JavaInputAstVisitor(builder, options.indentationMultiplier());
-    }
+//    }
     visitor.scan(unit, null);
     builder.sync(javaInput.getText().length());
     builder.drain();
