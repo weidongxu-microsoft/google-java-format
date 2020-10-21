@@ -28,17 +28,17 @@
   <groupId>com.google.googlejavaformat</groupId>
   <artifactId>google-java-format-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.8_customized-SNAPSHOT</version>
+  <version>1.8.0-beta.1</version>
 
   <distributionManagement>
     <snapshotRepository>
       <id>azuresdkmaven</id>
-      <url>bs://azuresdkmaven.blob.core.windows.net/snapshot/m2</url>
+      <url>bs://azuresdkmaven.blob.core.windows.net/snapshot</url>
     </snapshotRepository>
 
     <repository>
       <id>azuresdkmaven</id>
-      <url>bs://azuresdkmaven.blob.core.windows.net/snapshot/m2</url>
+      <url>bs://azuresdkmaven.blob.core.windows.net/maven2</url>
     </repository>
   </distributionManagement>
 
